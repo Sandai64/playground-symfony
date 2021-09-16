@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des animaux{% endblock %}
+
+{% block body %}
+{{ include('navbar.html.twig') }}
+<div class="container mx-auto px-4 sm:px-0">
+    
+    <p class="text-2xl font-bold">Liste des animaux</p>
+    <hr>
+
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 my-4">
+        {% for animal in animal_list %}
+        <div class="flex bg-gray-200 rounded-xl shadow transition-all hover:shadow-lg hover:bg-gray-300">
+            <img src="{{ animal.image }}" alt="Animal photo" class="w-56 rounded-xl">
+            <div class="flex flex-col justify-between p-4 space-y-4">
+                <div class="space-y-2">
+                    <p class="font-bold text-md select-none">{{ animal.name }}</p>
+                    <p class="italic text-sm select-none">"{{ animal.description }}"</p>
+                </div>
+                <div>
+                    <span class="bg-green-400 rounded-md shadow px-2 py-1 select-none cursor-pointer">Learn more...</span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
